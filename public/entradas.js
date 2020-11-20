@@ -50,7 +50,8 @@ function checkout(ObjectID){
   .then(res => res.json())
   .then(function (datos) {
     console.log(datos)
-    document.getElementById("infoPeli").innerHTML = `<h3>${datos.mensaje}</h3>`
+    document.getElementById("feedback").innerHTML = `<h3>${datos.mensaje}</h3>`
+    abrePop()
     
    })
 }
