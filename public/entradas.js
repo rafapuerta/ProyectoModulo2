@@ -63,3 +63,7 @@ function abrePop() {
 function cierraPop() {
   document.getElementById("popup").style.display = "none";
 }
+
+function irPerfil() {
+  window.location.assign("./user.html")
+}

@@ -42,22 +42,23 @@ function registrar() {
             document.getElementById("password").value = "";
             document.getElementById(
               "formularioFeedback"
-            ).innerHTML = `<p>${data.mensaje}</p>`;
+            ).innerHTML = `<h4>${data.mensaje}</h4>
+            <button onclick="reloadUser()">INICIAR SESIÓN</button>`;
           } else {
             document.getElementById(
               "formularioFeedback"
-            ).innerHTML = `<p>${data.mensaje}</p>`;
+            ).innerHTML = `<h5>${data.mensaje}</h5>`;
           }
         });
     } else {
       document.getElementById("password").style.color = "red";
       document.getElementById("formularioFeedback").innerHTML =
-        "<p>La contraseña no cumple los requisitos.</p>";
+        "<h4>La contraseña no cumple los requisitos.</h4>";
     }
   } else {
     document.getElementById("email").style.color = "red";
     document.getElementById("formularioFeedback").innerHTML =
-      "<p>El e-mail no cumple los requisitos.</p>";
+      "<h5>El e-mail no cumple los requisitos.</h5>";
   }
 }
 
@@ -111,6 +112,7 @@ function private(email) {
         <p>Lugar: ${datos[0].entradas[i].sala}</p>
         <p>Entrada nº: ${datos[0].entradas[i].numero}</p>
         </div>
+        
         </div>`;
         }
       }
@@ -265,6 +267,22 @@ function loadRegistro() {
           </div>`;
 }
 
+/* function borraEntrada(id) {
+  fetch("/entradas/borrar", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email: sessionStorage.getItem("sesionEmail"), id: id }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      reloadUser()
+    });
+} */
+
+
+
 function emailIsValid(email) {
   return /\S+@\S+\.\S+/.test(email);
 }
@@ -272,3 +290,8 @@ function emailIsValid(email) {
 function passIsValid(password) {
   return /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(password);
 }
+
+function reloadUser(){
+  window.location.assign("./user.html")
+}
+
